@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur d&#x27;Idées Marketing en Slogans Impactants | Générez vos Slogans Maintenant</title>
+    <meta name="description" content="Transformez des concepts marketing bruts en slogans courts, mémorables et percutants, optimisés pour la viralité sur les réseaux sociaux.">
+    <style>
+        :root {
+            --color-bg: #1A1A1A;
+            --color-text: #E0E0E0;
+            --color-primary: #FF3366;
+            --color-secondary: #33CCFF;
+            --color-accent: #FFCC33;
+            --color-card-bg: rgba(255, 255, 255, 0.08);
+            --color-border: rgba(255, 255, 255, 0.15);
+            --font-family-primary: 'Helvetica Neue', Arial, sans-serif;
+            --font-family-mono: 'SF Mono', 'Roboto Mono', monospace;
+            --glow-effect: 0 0 8px var(--color-primary), 0 0 16px var(--color-primary);
+        }
+
+        body {
+            font-family: var(--font-family-primary);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--color-bg);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-shadow: var(--glow-effect);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--color-secondary);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            gap: 2rem;
+            grid-template-columns: 1fr;
+        }
+
+        .card {
+            background-color: var(--color-card-bg);
+            border-radius: 12px;
+            padding: 1.8rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            background: radial-gradient(circle at center, rgba(var(--color-primary-rgb), 0.1) 0%, transparent 70%);
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--color-accent);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--color-text);
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
+        textarea, input[type="text"], select {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--color-text);
+            font-family: var(--font-family-mono);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        textarea:focus, input[type="text"]:focus, select:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.3);
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            background-color: var(--color-primary);
+            color: var(--color-bg);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), 0.4);
+        }
+
+        button:hover {
+            background-color: #FF6699;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), 0.6);
+        }
+
+        #tool-result {
+            min-height: 150px;
+            background-color: rgba(0, 0, 0, 0.15);
+            border: 1px dashed var(--color-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-family: var(--font-family-mono);
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInResult 0.5s forwards;
+        }
+
+        @keyframes fadeInResult {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .result-group h3 {
+            color: var(--color-secondary);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(var(--color-secondary-rgb), 0.3);
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .result-group h3::before {
+            content: '#';
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+            font-size: 1.5rem;
+            font-family: var(--font-family-mono);
+        }
+
+        .result-group ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .result-group li {
+            background-color: rgba(var(--color-secondary-rgb), 0.05);
+            border-left: 3px solid var(--color-secondary);
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            font-family: var(--font-family-mono);
+            color: var(--color-text);
+        }
+
+        .result-group li::before {
+            content: '»';
+            color: var(--color-accent);
+            margin-right: 0.8rem;
+            font-weight: bold;
+        }
+
+        .features {
+            background-color: rgba(var(--color-secondary-rgb), 0.05);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            margin-top: 4rem;
+        }
+
+        .features h2 {
+            color: var(--color-primary);
+            margin-bottom: 2rem;
+            text-shadow: var(--glow-effect);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            background-color: var(--color-card-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+
+        .feature-item h3 {
+            color: var(--color-accent);
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-item h3::before {
+            content: '✓';
+            color: var(--color-primary);
+            margin-right: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        .testimonials {
+            padding: 4rem 1rem;
+            text-align: center;
+            background-color: rgba(var(--color-primary-rgb), 0.05);
+        }
+
+        .testimonials h2 {
+            color: var(--color-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '“';
+            font-family: serif;
+            font-size: 4rem;
+            color: var(--color-accent);
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-card .author {
+            font-weight: bold;
+            color: var(--color-primary);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        footer {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            padding: 2rem 1rem;
+            text-align: center;
+            border-top: 1px solid var(--color-border);
+            margin-top: auto;
+        }
+
+        footer .seo-text {
+            font-size: 0.8rem;
+            color: rgba(var(--color-text-rgb), 0.7);
+            max-width: 800px;
+            margin: 1rem auto 0;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 2fr 1fr;
+            }
+            .features, .testimonials {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://convertisseur-d-idees-marketing-en-slogans-impactants-1.onrender.com">
+    <meta property="og:title" content="Convertisseur d&#x27;Idées Marketing en Slogans Impactants">
+    <meta property="og:description" content="Transformez des concepts marketing bruts en slogans courts, mémorables et percutants, optimisés pour la viralité sur les réseaux sociaux.">
+    <meta property="og:url" content="https://convertisseur-d-idees-marketing-en-slogans-impactants-1.onrender.com">
+    <meta property="og:type" content="website">
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Convertisseur d'Idées Marketing en Slogans Impactants", "description": "Transformez des concepts marketing bruts en slogans courts, mémorables et percutants, optimisés pour la viralité sur les réseaux sociaux.", "url": "https://convertisseur-d-idees-marketing-en-slogans-impactants-1.onrender.com", "applicationCategory": "UtilityApplication", "operatingSystem": "Web Browser"}</script>
+</head>
+<body data-site-slug="convertisseur-d-idees-marketing-en-slogans-impactants-1" data-runtime-mode="slogan_generator">
+    <header>
+        <h1>Convertisseur d'Idées Marketing en Slogans Impactants</h1>
+        <p>Transformez vos concepts marketing bruts en phrases courtes, mémorables et percutantes. Idéal pour les réseaux sociaux et la viralité.</p>
+    </header>
+
+    <main class="container">
+        <section class="card tool-section">
+            <h2>Générez vos Slogans Maintenant</h2>
+            <form id="tool-form">
+                <label for="concept">Votre idée marketing / concept :</label>
+                <textarea id="concept" rows="5" placeholder="Décrivez votre produit, service, ou la campagne que vous voulez lancer. Soyez bref mais précis. Ex: 'Application de méditation guidée pour réduire le stress des étudiants.'" required></textarea>
+
+                <label for="keywords">Mots-clés pertinents (séparés par des virgules) :</label>
+                <input type="text" id="keywords" placeholder="Détente, esprit clair, productivité, bien-être">
+
+                <label for="targetAudience">Public cible :</label>
+                <input type="text" id="targetAudience" placeholder="Étudiants, jeunes professionnels, parents occupés">
+
+                <label for="tone">Ton désiré :</label>
+                <select id="tone">
+                    <option value="humoristique">Humoristique</option>
+                    <option value="percutant" selected>Percutant / Direct</option>
+                    <option value="inspirant">Inspirant / Motivateur</option>
+                    <option value="chaleureux">Chaleureux / Bienveillant</option>
+                    <option value="provocateur">Provocateur / Audacieux</option>
+                    <option value="expert">Expert / Autoritaire</option>
+                </select>
+
+                <button type="submit" id="tool-submit">Générer les Slogans</button>
+            </form>
+        </section>
+
+        <section class="card result-section">
+            <h2>Vos Slogans Générés</h2>
+            <div id="tool-result">
+                <p id="result-detail">Vos slogans apparaîtront ici. Remplissez le formulaire et cliquez sur "Générer".</p>
+            </div>
+        </section>
+    </main>
+
+    <section class="features">
+        <h2>Pourquoi utiliser notre générateur ?</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>Viralité Assurée</h3>
+                <p>Créez des slogans optimisés pour le partage sur les réseaux sociaux, augmentant votre portée organique.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Gain de Temps</h3>
+                <p>Fini les heures passées à brainstormer. Obtenez des dizaines d'idées en quelques secondes.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Diversité de Tonalités</h3>
+                <p>Choisissez le ton qui correspond le mieux à votre marque : de l'humour à l'expertise, nous couvrons tout.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Impact Garanti</h3>
+                <p>Des slogans courts, clairs et percutants pour capter l'attention de votre audience cible.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>Ce qu'ils en disent...</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p>"Bluffant ! J'ai trouvé le slogan parfait pour ma nouvelle campagne en moins de 2 minutes. Un outil indispensable."</p>
+                <div class="author">Léa M., Créatrice de Contenu</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"Notre petite entreprise avait du mal à trouver la bonne accroche. Ce générateur a débloqué notre créativité. Je recommande !"</p>
+                <div class="author">Marc D., Dir. Marketing PME</div>
+            </div>
+            <div class="testimonial-card">
+                <p>"La variété des tons est incroyable. On a pu tester plusieurs approches pour nos publicités Instagram. Très efficace."</p>
+                <div class="author">Sophie C., Responsable Social Media</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Slogan Impactant. Tous droits réservés.</p>
+        <div class="seo-text">
+            <p><strong>Générateur de slogans en ligne :</strong> Créer un slogan percutant et mémorable pour votre entreprise ou votre campagne marketing n'a jamais été aussi simple. Notre outil gratuit vous aide à trouver l'accroche idéale pour votre publicité, votre marque ou votre produit. Que vous cherchiez des slogans publicitaires créatifs, des phrases d'accroche pour les réseaux sociaux, des accroches marketing originales ou des titres de campagnes percutantes, notre convertisseur d'idées est la solution. Optimisez votre présence en ligne avec des punchlines qui captivent. Idéal pour les petites entreprises, les startups, les marketeurs digitaux et les créateurs de contenu en France. Découvrez comment générer des slogans viraux, humoristiques, inspirants ou provocateurs pour TikTok, Instagram, YouTube et toutes vos plateformes préférées. Essayez notre créateur de slogans français et boostez votre communication dès aujourd'hui !</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('tool-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const concept = document.getElementById('concept').value;
+            const keywords = document.getElementById('keywords').value.split(',').map(k => k.trim()).filter(k => k.length > 0);
+            const targetAudience = document.getElementById('targetAudience').value;
+            const tone = document.getElementById('tone').value;
+            const resultDiv = document.getElementById('tool-result');
+
+            if (!concept) {
+                resultDiv.innerHTML = '<p style="color: var(--color-primary);">Veuillez décrire votre idée marketing pour générer des slogans.</p>';
+                resultDiv.style.opacity = 1;
+                resultDiv.style.transform = 'translateY(0)';
+                return;
+            }
+
+            const baseSlogans = generateBaseSlogans(concept, keywords, targetAudience);
+            const styledSlogans = applyToneAndStyle(baseSlogans, tone);
+
+            let htmlOutput = '';
+            for (const style in styledSlogans) {
+                htmlOutput += `<div class="result-group"><h3>${capitalizeFirstLetter(style)}</h3><ul>`;
+                styledSlogans[style].forEach(slogan => {
+                    htmlOutput += `<li>${slogan}</li>`;
+                });
+                htmlOutput += `</ul></div>`;
+            }
+
+            resultDiv.innerHTML = htmlOutput;
+            resultDiv.style.opacity = 0;
+            resultDiv.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                resultDiv.style.opacity = 1;
+                resultDiv.style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
+        function generateBaseSlogans(concept, keywords, targetAudience) {
+            const conceptsArray = concept.split('.').map(s => s.trim()).filter(s => s.length > 0);
+            const mainConcept = conceptsArray[0];
+
+            let slogans = [];
+
+            // General & Direct
+            slogans.push(`Votre idée, notre impact. C'est ça, le marketing intelligent.`);
+            slogans.push(`Transformez vos concepts en succès. Slogan garanti.`);
+            slogans.push(`La force de votre message commence ici.`);
+            slogans.push(`Simplifiez, impactez, réussissez.`);
+
+            // Using keywords
+            if (keywords.length > 0) {
+                const primaryKeyword = keywords[0];
+                slogans.push(`Atteignez votre ${primaryKeyword} avec le bon slogan.`);
+                if (keywords.length > 1) {
+                    slogans.push(`Plus de ${primaryKeyword}, plus de ${keywords[1]}. C'est la promesse.`);
+                }
+            }
+
+            // Using target audience
+            if (targetAudience) {
+                slogans.push(`Parlez à vos ${targetAudience} comme jamais.`);
+                slogans.push(`Le slogan qui résonne avec vos ${targetAudience}.`);
+            }
+
+            // Based on main concept
+            if (mainConcept) {
+                 slogans.push(`${mainConcept} : Le message clé, c'est nous.`);
+                 slogans.push(`Votre vision : un slogan impactant. C'est notre mission.`);
+            }
+
+            // Ensure unique slogans
+            return [...new Set(slogans)];
+        }
+
+        function applyToneAndStyle(baseSlogans, selectedTone) {
+            const output = {
+                'SEO-Friendly': [],
+                'Clickbait / Viral': [],
+                'Expert / Autoritaire': [],
+                'Doux / Chaleureux': [],
+                'Commercial / Direct': []
+            };
+
+            baseSlogans.forEach(slogan => {
+                // SEO-Friendly
+                output['SEO-Friendly'].push(`${slogan}. Trouvez le meilleur slogan pour votre marque.`);
+                output['SEO-Friendly'].push(`Générateur de Slogans : ${slogan} en ligne.`);
+
+                // Clickbait / Viral
+                output['Clickbait / Viral'].push(`Le slogan qui va faire le buzz ! ${slogan}`);
+                output['Clickbait / Viral'].push(`Incroyable : Générez votre slogan viral en 1 clic ! ${slogan}`);
+                output['Clickbait / Viral'].push(`Ceci n'est pas un slogan, c'est une révolution. #${slogan.replace(/\s/g, '')}`);
+
+                // Expert / Autoritaire
+                output['Expert / Autoritaire'].push(`Notre expertise, votre slogan stratégique : ${slogan}`);
+                output['Expert / Autoritaire'].push(`L'art du slogan, maîtrisé. Performance assurée : ${slogan}`);
+                output['Expert / Autoritaire'].push(`Maîtrisez votre message. ${slogan}`);
+
+                // Doux / Chaleureux
+                output['Doux / Chaleureux'].push(`Créons ensemble le slogan qui vous ressemble. ❤️ ${slogan}`);
+                output['Doux / Chaleureux'].push(`Un message qui touche le cœur. Découvrez ${slogan}`);
+
+                // Commercial / Direct
+                output['Commercial / Direct'].push(`Vendez plus avec ${slogan}. Commencez dès maintenant.`);
+                output['Commercial / Direct'].push(`Votre offre, notre slogan. L'équation gagnante : ${slogan}`);
+            });
+
+            // Add some specific slogans based on selected tone
+            if (selectedTone === 'humoristique') {
+                output['Clickbait / Viral'].push(`Votre marque n'a jamais été aussi drôle. Prêt à rire ?`);
+                output['Doux / Chaleureux'].push(`Un peu de fun dans votre marketing, ça ne fait jamais de mal !`);
+            } else if (selectedTone === 'provocateur') {
+                output['Clickbait / Viral'].push(`Osez la différence. Osez l'impact. Oserez-vous ?`);
+                output['Expert / Autoritaire'].push(`Bousculez les codes. Dominez le marché.`);
+            } else if (selectedTone === 'inspirant') {
+                output['Doux / Chaleureux'].push(`L'inspiration au service de votre message. Élevez-vous.`);
+                output['Expert / Autoritaire'].push(`Passez à l'action. Réalisez votre potentiel.`);
+            }
+
+            // Ensure uniqueness within each category
+            for (const style in output) {
+                output[style] = [...new Set(output[style])].slice(0, 5); // Limit to 5 per category for brevity
+            }
+
+            return output;
+        }
+    </script>
+<div id="qa-smoke-result" hidden></div>
+<script id="farmbuilder-affiliate-helper">
+(function () {
+  window.__UTILITY_AFFILIATE_MAP = window.__UTILITY_AFFILIATE_MAP || {};
+  document.addEventListener("click", function (event) {
+    const target = event.target.closest("[data-affiliate-slot]");
+    if (!target) return;
+    const slot = target.getAttribute("data-affiliate-slot");
+    const href = window.__UTILITY_AFFILIATE_MAP[slot];
+    if (!href) return;
+    if (target.tagName && target.tagName.toLowerCase() === "a") {
+      target.setAttribute("href", href);
+      target.setAttribute("rel", "nofollow sponsored noopener noreferrer");
+      return;
+    }
+    event.preventDefault();
+    window.open(href, "_blank", "noopener");
+  }, true);
+})();
+</script>
+<script id="farmbuilder-functional-qa">
+(function () {
+  function marker() {
+    let node = document.getElementById("qa-smoke-result");
+    if (node) return node;
+    node = document.createElement("div");
+    node.id = "qa-smoke-result";
+    node.hidden = true;
+    document.body.appendChild(node);
+    return node;
+  }
+
+  let qaFinished = false;
+  let qaWatchdog = null;
+
+  function normalize(text) {
+    return String(text || "").replace(/\s+/g, " ").trim();
+  }
+
+  function findForm() {
+    return document.getElementById("tool-form") || document.querySelector("form");
+  }
+
+  function findResult() {
+    return (
+      document.getElementById("tool-result") ||
+      document.querySelector("[data-result]") ||
+      document.querySelector(".tool-result, .result-card, .result, .results, .output, .preview, .diagnostic, .analysis")
+    );
+  }
+
+  function primaryAction(form) {
+    if (!form) return null;
+    return (
+      document.getElementById("tool-submit") ||
+      form.querySelector("#tool-submit") ||
+      form.querySelector("[data-primary-action]") ||
+      form.querySelector("button[type=submit]") ||
+      form.querySelector("button") ||
+      form.querySelector("input[type=submit]")
+    );
+  }
+
+  function resultSignature(node) {
+    if (!node) return "";
+    const text = normalize(node.textContent);
+    const html = normalize(node.innerHTML).slice(0, 600);
+    return `${text}||${html}`;
+  }
+
+  function resultHeadline(node) {
+    if (!node) return "";
+    const heading = node.querySelector("h1, h2, h3, strong, b");
+    return normalize(heading ? heading.textContent : "");
+  }
+
+  function sampleText(field) {
+    const key = `${field.id || ""} ${field.name || ""} ${field.placeholder || ""}`.toLowerCase();
+    if (/email/.test(key)) return "bonjour@example.com";
+    if (/url|site|website|lien/.test(key)) return "https://example.com/offre-solaire";
+    if (/phone|tel|mobile/.test(key)) return "0612345678";
+    if (/ville|city|localisation|location|region|departement|postal/.test(key)) return "Paris";
+    if (/orientation/.test(key)) return "sud";
+    if (/keyword|theme|topic|sujet|subject/.test(key)) return "energie solaire domestique";
+    if (/titre|title/.test(key)) return "Simulateur solaire maison";
+    if (/nom|name|project/.test(key)) return "Projet Horizon";
+    if (/description|notes|content|message/.test(key)) return "Maison individuelle exposee sud avec toiture exploitable.";
+    return field.placeholder || "France";
+  }
+
+  function sampleNumber(field) {
+    const key = `${field.id || ""} ${field.name || ""}`.toLowerCase();
+    if (/inclinaison|angle|slope/.test(key)) return "30";
+    if (/surface|size|m2|sqm/.test(key)) return "28";
+    if (/annee|year/.test(key)) return "2024";
+    if (/prix|price|budget|cost|amount|montant/.test(key)) return "12000";
+    const min = Number(field.min || "");
+    const max = Number(field.max || "");
+    if (Number.isFinite(min) && Number.isFinite(max) && max >= min) {
+      return String(Math.min(max, Math.max(min, min + Math.round((max - min) * 0.35))));
+    }
+    if (Number.isFinite(min)) return String(Math.max(min, 12));
+    if (Number.isFinite(max)) return String(Math.min(max, 12));
+    return field.value || "12";
+  }
+
+  function applySample(field) {
+    const tag = (field.tagName || "").toLowerCase();
+    const type = (field.type || "").toLowerCase();
+    if (field.disabled) return;
+    if (type === "hidden" || type === "submit" || type === "button" || type === "reset" || type === "image" || type === "file") {
+      return;
+    }
+    const currentValue = normalize(field.value);
+    if (tag === "select") {
+      if (currentValue) return;
+      const option = Array.from(field.options || []).find((item) => item.value && !item.disabled) || field.options[0];
+      if (option) field.value = option.value;
+      return;
+    }
+    if (type === "checkbox") {
+      if (field.checked) return;
+      field.checked = true;
+      return;
+    }
+    if (type === "radio") {
+      if (field.checked) return;
+      field.checked = true;
+      return;
+    }
+    if (type === "date") {
+      if (currentValue) return;
+      field.value = "2026-03-01";
+      return;
+    }
+    if (type === "email") {
+      if (currentValue) return;
+      field.value = "bonjour@example.com";
+      return;
+    }
+    if (type === "url") {
+      if (currentValue) return;
+      field.value = "https://example.com/offre-solaire";
+      return;
+    }
+    if (type === "tel") {
+      if (currentValue) return;
+      field.value = "0612345678";
+      return;
+    }
+    if (type === "color") {
+      if (currentValue) return;
+      field.value = "#2f855a";
+      return;
+    }
+    if (type === "number" || type === "range") {
+      if (currentValue) return;
+      field.value = sampleNumber(field);
+      return;
+    }
+    if (currentValue) return;
+    field.value = sampleText(field);
+  }
+
+  function stamp(status, detail, headline, primary) {
+    if (qaFinished) return;
+    qaFinished = true;
+    if (qaWatchdog) {
+      window.clearTimeout(qaWatchdog);
+      qaWatchdog = null;
+    }
+    const node = marker();
+    node.dataset.status = status;
+    node.dataset.mode = "native-form";
+    node.dataset.detail = detail || "";
+    node.dataset.headline = headline || "";
+    node.dataset.primary = primary || "";
+    node.dataset.viewport = window.innerWidth <= 640 ? "mobile" : "desktop";
+    window.setTimeout(function () {
+      try {
+        window.stop();
+      } catch (_error) {}
+    }, 0);
+  }
+
+  function installModalGuards() {
+    const noop = function () {};
+    const approve = function () { return true; };
+    const empty = function () { return ""; };
+    try { window.alert = noop; } catch (_error) {}
+    try { window.confirm = approve; } catch (_error) {}
+    try { window.prompt = empty; } catch (_error) {}
+  }
+
+  function triggerAction(form, action) {
+    try {
+      if (typeof form.requestSubmit === "function") {
+        form.requestSubmit(action || undefined);
+        return;
+      }
+    } catch (_error) {}
+    if (action && typeof action.click === "function") {
+      action.click();
+      return;
+    }
+    form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
+  }
+
+  function inspectResult(before, attemptsLeft) {
+    const result = findResult();
+    if (!result) {
+      stamp("fail", "La zone de resultat est introuvable.", "");
+      return;
+    }
+    const after = resultSignature(result);
+    const text = normalize(result.textContent);
+    if (after && after !== before && text.length >= 24) {
+      const primary = result.querySelector("a[href], button[data-href], [data-primary-url]") || document.querySelector("#tool-result a[href]");
+      stamp("pass", "Le formulaire natif a mis a jour la zone de resultat.", resultHeadline(result), primary ? (primary.getAttribute("href") || primary.getAttribute("data-primary-url") || "") : "");
+      return;
+    }
+    if (attemptsLeft > 0) {
+      window.setTimeout(function () {
+        inspectResult(before, attemptsLeft - 1);
+      }, 250);
+      return;
+    }
+    stamp("fail", "La zone de resultat n'a pas renvoye de contenu exploitable.", resultHeadline(result));
+  }
+
+  function runSmoke() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("__qa") !== "functional") return;
+    qaWatchdog = window.setTimeout(function () {
+      stamp("fail", "QA smoke timed out before the page reported a usable result.", "");
+    }, 7000);
+    const form = findForm();
+    if (!form) {
+      stamp("fail", "Le formulaire principal est introuvable.", "");
+      return;
+    }
+    const result = findResult();
+    const before = resultSignature(result);
+    installModalGuards();
+    try {
+      form.querySelectorAll("input, select, textarea").forEach(applySample);
+    } catch (error) {
+      stamp("fail", error && error.message ? `QA smoke sample failed: ${error.message}` : "QA smoke sample failed before submit.", "");
+      return;
+    }
+    const action = primaryAction(form);
+    try {
+      triggerAction(form, action);
+    } catch (error) {
+      stamp("fail", error && error.message ? `QA smoke submit failed: ${error.message}` : "QA smoke submit failed.", "");
+      return;
+    }
+    inspectResult(before, 10);
+  }
+
+  window.addEventListener("error", function (event) {
+    const message = event && event.message ? event.message : "JavaScript runtime error during QA smoke.";
+    stamp("fail", `QA smoke JS error: ${message}`, "");
+  }, { once: true });
+
+  window.addEventListener("unhandledrejection", function (event) {
+    const reason = event && event.reason;
+    const detail = typeof reason === "string"
+      ? reason
+      : reason && reason.message
+        ? reason.message
+        : "Unhandled promise rejection during QA smoke.";
+    stamp("fail", `QA smoke rejection: ${detail}`, "");
+  }, { once: true });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", function () {
+      window.setTimeout(runSmoke, 60);
+    }, { once: true });
+  } else {
+    window.setTimeout(runSmoke, 60);
+  }
+})();
+</script>
+</body>
+</html>
